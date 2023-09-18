@@ -1,0 +1,17 @@
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
