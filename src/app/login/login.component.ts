@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +11,19 @@ export class LoginComponent implements OnInit{
   data="Happy Banking with us"
   data2="enter account number"
 
-  acno:string=""
-  psw:string=""
+  acno:any
+  psw:any
 
-  constructor(){}
+  constructor(private rout:Router){}
 
   ngOnInit(): void {
       
   }
   login(){
-    console.log(this.acno);
-    console.log(this.psw);
-    
-    
-    
+    // console.log(this.acno);
+    // console.log(this.psw);
+
+    //redirection
+   this.rout.navigateByUrl("home")
   }
 }

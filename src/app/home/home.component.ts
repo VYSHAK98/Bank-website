@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../bankService/data.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {}
+  sdata:any
+  constructor(private ds:DataService) {}
+
   ngOnInit(): void {
-
+    setTimeout(()=>{
+      this.ds.serviceMethod()
+    },2000)
+    this.sdata=this.ds.data
   }
-
+  
 }
