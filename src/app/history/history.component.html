@@ -1,0 +1,42 @@
+<div class="row bg-dark" style="max-width: 1275px;">
+    <div class="col-7 mb-5 pb-5 px-lg-4">
+        <h2 class="text-white text-center p-4">Account Statement</h2>
+        <div class="btn-group p-3 ms-4" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-light">All</button>
+            <button type="button" class="btn btn-outline-light">Debit</button>
+            <button type="button" class="btn btn-outline-light">Credit</button>
+        </div>
+        <div *ngIf="spinner" class="text-center p-4">
+            <i class="fa-solid fa-spinner fa-spin fa-3x text-info" style="color: #356fc6;"></i>
+        </div>
+        <table *ngIf="!spinner" class="table p-3 table-dark table-striped-columns ms-4 w-100 mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Account Number</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of transactionArray,let j=index">
+                    <th scope="row">{{j+1}}</th>
+                    <td>{{i.type}}</td>
+                    <td>{{i.amount}}</td>
+                    <td>{{i.tacno}}</td>
+                    <td>{{i.date}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-outline-light p-2 ms-5 mt-5"><i
+                class="fa-solid fa-file-arrow-down fa-lg p-2" style="color: #677289;"></i><span
+                class="ms-1 p-1">Download</span></button>
+    </div>
+    <div class="col-5 text-center container mt-5 px-lg-4">
+        <h4 class="text-white mt-3">{{date}}</h4>
+        <img class="w-90 container" src="https://i.postimg.cc/pdfbVHg2/Pngtree-online-banking-login-page-website-6937273.pngg" alt="">
+        <button (click)="backtoHome()" type="button" class="btn btn-outline-light p-2 ms-5 mt-5"><span
+            class="">Back to<i class="fa-solid fa-house fa-lg p-1" style="color: #828997;"></i></span></button>
+    </div>
+</div>

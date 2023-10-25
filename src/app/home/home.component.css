@@ -1,7 +1,14 @@
-.py-5{
-    height: 85vh;
-
-}
 .dropdown-item:hover{
     background-color: black;
 }
+.s1{
+    color: green;
+}
+.s2{
+    color: red;
+}
+
+/* .homemain{
+    background-image: url(https://i.postimg.cc/gkJnhgdP/what-u-s-companies-can-learn-from-the-european-payment-scene-1500-1024x587.jpg);
+} */
+

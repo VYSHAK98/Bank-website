@@ -1,20 +1,37 @@
 
 <body>
-    <div class="container">
+    <div class="col6 container">
         <h2 class="text-white">Sign Up</h2>
-        <form action="#" method="post">
+        <form [formGroup]="signupForm" action="#" method="post">
+
             <div class="form-group">
-                <input type="text" id="a1" name="acno" placeholder="account number" class="form-control">
+                <input formControlName="acno" type="text" id="a1" name="acno" placeholder="account number" class="form-control">
             </div>
+            <div *ngIf="this.signupForm.get('acno')?.errors && this.signupForm.get('acno')?.touched">
+                <p class="text-danger">include numbers only</p>
+            </div>
+
             <div class="form-group">
-                <input type="email" id="su1" name="uname" placeholder="username" class="form-control">
+                <input formControlName="uname" type="email" id="u1" name="uname" placeholder="username" class="form-control">
             </div>
+            <div *ngIf="this.signupForm.get('uname')?.errors && this.signupForm.get('uname')?.touched">
+                <p class="text-danger">include characters only</p>
+            </div>
+
             <div class="form-group">
-            <input type="password" id="p1" name="psw" placeholder="enter password" class="form-control">
+            <input formControlName="psw" type="password" id="p1" name="password" placeholder="enter password" class="form-control">
             </div>
+            <div *ngIf="this.signupForm.get('psw')?.errors && this.signupForm.get('psw')?.touched">
+                <p class="text-danger">include characters and numbers only</p>
+            </div>
+
             <div class="form-group">
-                <input type="password" id="cp1" name="cpsw" placeholder="confirm password" class="form-control">
+                <input formControlName="cpsw" type="password" id="p2" name="password1" placeholder="confirm password" class="form-control">
             </div>
+            <div *ngIf="pswCheck">
+                <p class="text-danger">Passwords doesn't match</p>
+            </div>
+
             <button (click)="signup()" type="submit">Create</button>
         </form>
     </div>

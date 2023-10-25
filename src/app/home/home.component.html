@@ -1,59 +1,66 @@
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container px-lg-5">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link ms-5" aria-current="page" data-bs-toggle="modal" data-bs-target="#exampleModal">Balance check</a></li>
-                    <li class="nav-item"><a class="nav-link ms-5" href="#!" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Money Transfer</a></li>
-                    <li class="nav-item"><a class="nav-link ms-5" href="#!">Account statement</a></li>
-                    <li>
-                        <div class="dropdown ms-5 ">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-regular fa-circle-user fa-fade"></i>
-                            </button>
-                            <ul class="dropdown-menu bg-dark">
-                              <li><a class="dropdown-item text-white" href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal1">View Profile</a></li>
-                              <li><a class="dropdown-item text-white" href="#">Delete Account</a></li>
-                              <li><a class="dropdown-item text-white" href="#">Logout</a></li>
-                            </ul>
-                          </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <header class="py-5" style="height: 76vh;">
-        <div class="container px-lg-5">
-          <div class="m-4 m-lg-5">
-            <h1>{{sdata}}</h1>
-            <h1 class="display-5 fw-bold">Welcome anu</h1>
-            <p class="fs-4">Bootstrap utility classes are used to create this jumbotron since the old component has been removed from the framework. Why create custom CSS when you can use utilities?</p>
-        </div>
-        </div>
-    </header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container px-lg-5">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+        class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li (click)="getbalance()" class="nav-item"><a class="nav-link ms-5" aria-current="page" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Balance check</a></li>
+        <li class="nav-item"><a class="nav-link ms-5" href="#!" data-bs-toggle="offcanvas" href="#offcanvasExample"
+            role="button" aria-controls="offcanvasExample">Money Transfer</a></li>
+        <li class="nav-item"><a class="nav-link ms-5" routerLink="/history">Account statement</a></li>
+        <li>
+          <div class="dropdown ms-5 ">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="fa-regular fa-circle-user fa-fade"></i>
+            </button>
+            <ul class="dropdown-menu bg-dark">
+              <li (click)="getProfile()"><a class="dropdown-item text-white" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal1">View Profile</a></li>
+              <li><a class="dropdown-item text-white" href="#">Delete Account</a></li>
+              <li><a class="dropdown-item text-white" href="#">Logout</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<header class="row homemain py-5 bg-dark"  style="height: 80vh; max-width: 1275px;">
+  <div class="col-7 px-lg-5 container">
+    <div class="">
+      <h1 class="display-5 fw-bold  text-white">Hi Welcome <span class="" style="color: rgb(52, 176, 176);">{{name}}</span></h1>
+      <p class="fs-4  text-white">SBI's internet banking portal provides personal banking services that gives you complete control over all your banking demands online.</p>
+    </div>
+  </div>
+  <div class="col-5 px-lg-8">
+    <img class="w-100 container" src="https://i.postimg.cc/C1r8bCG7/360-F-256388395-a2-JKDJa-O6-WFKCk-GDs64-SIZbjlc-Dbz-TPP.jpg">
+  </div>
+</header>
 
 
 
 
 <!-- Balance check -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content bg-dark text-white">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Balance Details</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Hi name <br>
-          Your current account balance : 90000
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Balance Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2>Hi <span style="color: rgb(6, 187, 247);">{{name}}</span></h2> <br>
+        <h3>The current available balance in account number {{acno}}  <span style="color:  rgb(6, 187, 247);">Rs.{{balance}}</span></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
 
 <!--Money transfer-->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
@@ -62,13 +69,28 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body bg-dark">
-    <img class="w-100 container" style="height: 250px;" src="https://i.postimg.cc/wxP0dkcY/money-3630935-640-1.png" alt="">
+    <div>
+      <img class="w-100 container" style="height: 250px;" src="https://i.postimg.cc/wxP0dkcY/money-3630935-640-1.png"
+        alt="">
+    </div>
+      <div class="text-center p-3">
+        <h4 [ngClass]="msgClr?'s1':'s2'">{{message}}</h4>
+      </div>
     <div class="dropdown mt-3">
-      <form action="">
-        <input type="text" placeholder="Recepient Account Number" class="form-control mt-2 p-2">
-        <input type="text" placeholder="Amount To Transfer" class="form-control mt-2 p-2">
-        <input type="text" placeholder="Password" class="form-control mt-2 p-2">
-        <button class="btn btn-success mt-3 p-2 w-100">Send Money</button>
+      <form [formGroup]="transferForm" action="">
+        <input formControlName="rAcno" type="text" placeholder="Recepient Account Number" class="form-control mt-2 p-2">
+        <div *ngIf="this.transferForm.get('rAcno')?.errors && this.transferForm.get('rAcno')?.touched">
+          <p class="text-danger">include numbers only</p>
+        </div>
+        <input formControlName="amnt" type="text" placeholder="Amount To Transfer" class="form-control mt-2 p-2">
+        <div *ngIf="this.transferForm.get('amnt')?.errors && this.transferForm.get('amnt')?.touched">
+          <p class="text-danger">include numbers only</p>
+        </div>
+        <input formControlName="psw" type="password" placeholder="Password" class="form-control mt-2 p-2">
+        <div *ngIf="this.transferForm.get('psw')?.errors && this.transferForm.get('psw')?.touched">
+          <p class="text-danger">include characters and numbers only</p>
+        </div>
+        <button (click)="moneyTransfer()" class="btn btn-success mt-3 p-2 w-100">Send Money</button>
       </form>
     </div>
   </div>
@@ -83,7 +105,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body bg-dark text-white">
-        <img style="border-radius: 200px; width: 50%; margin-left: 120px;" src="https://i.postimg.cc/d1GVnFFV/219983.png" alt="">
+        <img style="border-radius: 200px; width: 50%; margin-left: 120px;"
+          src="https://i.postimg.cc/d1GVnFFV/219983.png" alt="">
         <div class="row">
           <div class="col-6">
             <h5 class="mt-2">User Name</h5>
@@ -91,9 +114,9 @@
             <h5 class="mt-2">Account Number</h5>
           </div>
           <div class="col-6">
-            <h3>abcd</h3>
+            <h3><span style="color:  rgb(6, 187, 247);">{{name}}</span></h3>
             <hr>
-            <h3>1234</h3>
+            <h3><span style="color:  rgb(6, 187, 247);">{{acno}}</span></h3>
           </div>
         </div>
       </div>
