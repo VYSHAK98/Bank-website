@@ -29,8 +29,9 @@ export class LoginComponent implements OnInit {
         next: (result: any) => {
 
           //store acno in local storage
-          localStorage.setItem('currentAcno',JSON.stringify(acno))
-          localStorage.setItem('currentUname',result.currentUser)
+          localStorage.setItem('currentAcno', JSON.stringify(acno))
+          localStorage.setItem('currentUname', result.currentUser)
+          localStorage.setItem('token', JSON.stringify(result.token))
 
           alert(result.message)
           // redirection
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
         }
       })
     }
-    else{
+    else {
       alert('invalid form')
     }
   }

@@ -2,6 +2,7 @@ import { Component, OnInit, ɵɵInputTransformsFeature } from '@angular/core';
 import { DataService } from '../bankService/data.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,9 +22,10 @@ export class HomeComponent implements OnInit {
   balance: any = ''
   message:any=''
   msgClr:any=true
+  dAcno:any=''
 
 
-  constructor(private ds: DataService,private fb: FormBuilder,private dp:DatePipe) { }
+  constructor(private ds: DataService,private fb: FormBuilder,private dp:DatePipe,private rout:Router) { }
 
 
   ngOnInit(): void {
@@ -31,6 +33,12 @@ export class HomeComponent implements OnInit {
     if (localStorage.getItem('currentUname')) {
       this.name = localStorage.getItem("currentUname")
 
+    }
+
+    //login or not
+    if(!localStorage.getItem("currentAcno")){
+      this.rout.navigateByUrl("")
+      alert("please login first")
     }
   }
 
@@ -98,6 +106,34 @@ export class HomeComponent implements OnInit {
     else{
       this.message="invalid form"
       this.msgClr=false
+    }
+  }
+  logout(){
+    localStorage.removeItem("currentUname")
+    localStorage.removeItem("currentAcno")
+    this.rout.navigateByUrl("")
+  }
+
+  deleteActive(){
+    if(localStorage.getItem("currentAcno")){
+      this.dAcno=JSON.parse(localStorage.getItem("currentAcno") || "")
+      console.log(this.dAcno);
+      
+    }
+  }
+
+  cancelp(){
+    this.dAcno=""
+  }
+
+  yesDelete(){
+    if(this.dAcno){
+      this.ds.accountDeleteApi(this.dAcno).subscribe({
+        next:(result:any)=>{
+          alert(result.message)
+          this.rout.navigateByUrl('')
+        }
+      })
     }
   }
 }

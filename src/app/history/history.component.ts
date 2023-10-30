@@ -14,6 +14,7 @@ export class HistoryComponent implements OnInit {
 
   spinner:any=true
   date:any=""
+  searchTerm:any=''
 
   constructor(private ds: DataService,private rout:Router) { }
 
@@ -38,5 +39,9 @@ export class HistoryComponent implements OnInit {
   }
   backtoHome(){
     this.rout.navigateByUrl('home')
+  }
+
+  filterData(search:any){
+    this.searchTerm=search
   }
 }

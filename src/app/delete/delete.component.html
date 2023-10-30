@@ -1,0 +1,9 @@
+<div *ngIf="data" class="bg-dark p-5">
+    <div class="text-center w-50 container p-5 border border-info-subtle rounded-5 text-white" style="background-color: rgba(41, 51, 51, 0.634);">
+        <h3>Are you sure!! <br>
+             Do you want to Delete Your Bank Account {{data}}?</h3>
+    
+             <button (click)="deleteAc()" class="btn btn-outline-danger px-5 mt-5">Yes</button>
+             <button (click)="cancel()" class="btn btn-outline-info px-5 mt-5 ms-3">No</button>
+    </div>
+</div>

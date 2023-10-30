@@ -2,9 +2,9 @@
     <div class="col-7 mb-5 pb-5 px-lg-4">
         <h2 class="text-white text-center p-4">Account Statement</h2>
         <div class="btn-group p-3 ms-4" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-light">All</button>
-            <button type="button" class="btn btn-outline-light">Debit</button>
-            <button type="button" class="btn btn-outline-light">Credit</button>
+            <button (click)="filterData('')" type="button" class="btn btn-outline-light">All</button>
+            <button (click)="filterData('DEBIT')" type="button" class="btn btn-outline-light">Debit</button>
+            <button (click)="filterData('CREDIT')" type="button" class="btn btn-outline-light">Credit</button>
         </div>
         <div *ngIf="spinner" class="text-center p-4">
             <i class="fa-solid fa-spinner fa-spin fa-3x text-info" style="color: #356fc6;"></i>
@@ -20,7 +20,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let i of transactionArray,let j=index">
+                                   <!--  data  | pipe name :searchString : searchKey -->
+                <tr *ngFor="let i of transactionArray | filter : searchTerm:'type',let j=index">
                     <th scope="row">{{j+1}}</th>
                     <td>{{i.type}}</td>
                     <td>{{i.amount}}</td>
@@ -34,7 +35,7 @@
                 class="ms-1 p-1">Download</span></button>
     </div>
     <div class="col-5 text-center container mt-5 px-lg-4">
-        <h4 class="text-white mt-3">{{date}}</h4>
+        <h5 class="text-white mt-3">{{date | date : 'short'}}</h5>
         <img class="w-90 container" src="https://i.postimg.cc/pdfbVHg2/Pngtree-online-banking-login-page-website-6937273.pngg" alt="">
         <button (click)="backtoHome()" type="button" class="btn btn-outline-light p-2 ms-5 mt-5"><span
             class="">Back to<i class="fa-solid fa-house fa-lg p-1" style="color: #828997;"></i></span></button>
